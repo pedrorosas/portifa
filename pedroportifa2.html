@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Pedro Rosas</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .header {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+        }
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .video-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            height: 390px; /* Altura aumentada em 30% da altura padrão de 300px */
+            border-radius: 15px; /* Bordas arredondadas */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px; /* Bordas arredondadas para o vídeo */
+            transition: transform 0.3s ease-in-out;
+        }
+        .video-container.expanded iframe {
+            position: fixed;
+            top: 10%;
+            left: 50%;
+            width: 80vw;
+            height: 70vh;
+            transform: translate(-50%, 0);
+            z-index: 100;
+            border-radius: 15px; /* Mantém bordas arredondadas em tela cheia */
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Aumentei a opacidade para 85% */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+            border-radius: 15px; /* Bordas arredondadas para o overlay */
+        }
+        .overlay h3 {
+            color: #fff;
+            font-size: 25px;
+            text-align: center;
+            margin: 0;
+        }
+        .video-container:hover .overlay {
+            opacity: 0;
+        }
+        .video-container.expanded .overlay {
+            display: none;
+        }
+        .bio-section {
+            margin-top: 50px;
+        }
+        .bio-section h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .bio-section p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .controls {
+            position: fixed;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 101;
+        }
+        .controls button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .controls button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">PEDRO ROSAS</div>
+        <div class="subtitle">Creative Director</div>
+
+        <!-- Grid layout with 12 videos -->
+        <div class="grid-container">
+            <!-- Repeat this block for each video (12 in total) -->
+            <div class="video-container" onclick="expandVideo(this, 0)">
+                <div class="overlay">
+                    <h3>Heinz Reviews for Naturalization</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/6HOETYimkiI" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 1)">
+                <div class="overlay">
+                    <h3>Heinz Hidden Spots</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/j47Q4I3-f1I?t=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 2)">
+                <div class="overlay">
+                    <h3>Mercado Livre / Files of Freedom</h3>
+                </div>
+                <iframe src="https://player.vimeo.com/video/823780533" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 3)">
+                <div class="overlay">
+                    <h3>Vivo / The Autism Journey</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/TJ-AGHNvYm0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 4)">
+                <div class="overlay">
+                    <h3>Brahma / Foamy Medical Department</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/x27HiXyULzo" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 5)">
+                <div class="overlay">
+                    <h3>Guaraná Antarctica / Fans Reporters</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/M_DvTWZXx1Y" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 6)">
+                <div class="overlay">
+                    <h3>Reclame Aqui / Miles for the People</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/4p19IQrbu4I" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 7)">
+                <div class="overlay">
+                    <h3>Call of Duty / Ghost Radio Codes</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/6qoHF6y3u1M" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 8)">
+                <div class="overlay">
+                    <h3>Asics / Foot Type Test Ad</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/N7H9N8V3xPo" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 9)">
+                <div class="overlay">
+                    <h3>Reclame Aqui / Contract Translator</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/x0UC3TF73Y0" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 10)">
+                <div class="overlay">
+                    <h3>Hermes Pardini Hospital / Flower of Life</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/AFarUgde94o" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container" onclick="expandVideo(this, 11)">
+                <div class="overlay">
+                    <h3>Domino's / Steady Pizza</h3>
+                </div>
+                <iframe src="https://www.youtube.com/embed/RmazabVWpWI" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Seção de Biografia -->
+        <div class="bio-section">
+            <h2>My Journey</h2>
+            <p>1987_ Born in Rio de Janeiro<br>
+            1999_ Built the official website of the school I studied.<br>
+            2001_ Started working at my mom's beachwear factory.<br>
+            2005_ Completed high school specialization in advertising.<br>
+            2006_ Began bachelor's degree in advertising.<br>
+            2008_ Started working at an advertising news website.<br>
+            2010_ Started working at advertising agencies as a Copywriter.<br>
+            2012_ Completed Miami Ad School's Miami Ideas Program.<br>
+            2012_ Named Luerzer's Archive Student of the Year.<br>
+            2015_ Received first Cannes Lions recognition.<br>
+            2015_ Relocated to São Paulo to work at Neogama/BBH.<br>
+            2017_ Moved to Ogilvy.<br>
+            2018_ Joined Publicis.<br>
+            2018_ Became part of Grey.<br>
+            2019_ Joined CP+B Brasil.<br>
+            2019_ Became father<br>
+            2021_ Became Associate Creative Director at GUT.<br>
+            2022_ Promoted to Creative Director at GUT São Paulo.<br>
+            2022_ Creative Director at Africa.<br><br>
+
+            Cannes Lions<br>
+            25 lions as creative<br><br>
+
+            Hit me up<br>
+            <a href="https://www.linkedin.com/in/prosas/" target="_blank">LinkedIn</a><br>
+            pedrorosas20@gmail.com
+            </p>
+        </div>
+
+        <div class="controls" style="display:none;">
+            <button id="prevBtn" onclick="navigateMedia(-1)">Preview</button>
+            <button id="nextBtn" onclick="navigateMedia(1)">Next</button>
+            <button onclick="closeMedia()">Close</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const containers = document.querySelectorAll('.video-container');
+
+        function expandVideo(container, index) {
+            currentIndex = index;
+            container.classList.add('expanded');
+            document.body.style.overflow = 'hidden'; // Disable scroll when expanded
+            document.querySelector('.controls').style.display = 'flex';
+            updateControls();
+        }
+
+        function closeMedia() {
+            const expandedVideo = document.querySelector('.video-container.expanded');
+            if (expandedVideo) {
+                expandedVideo.classList.remove('expanded');
+                document.body.style.overflow = 'auto'; // Enable scroll when retracted
+                document.querySelector('.controls').style.display = 'none';
+            }
+        }
+
+        function navigateMedia(direction) {
+            const expandedVideo = document.querySelector('.video-container.expanded');
+            if (expandedVideo) {
+                expandedVideo.classList.remove('expanded');
+                currentIndex += direction;
+
+                // Evitar que o índice vá além dos limites
+                if (currentIndex < 0) {
+                    currentIndex = 0;
+                } else if (currentIndex >= containers.length) {
+                    currentIndex = containers.length - 1;
+                }
+
+                containers[currentIndex].classList.add('expanded');
+                updateControls();
+            }
+        }
+
+        function updateControls() {
+            document.getElementById('prevBtn').style.display = currentIndex === 0 ? 'none' : 'inline-block';
+        }
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeMedia();
+            }
+        });
+    </script>
+</body>
+</html>
